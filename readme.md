@@ -1,4 +1,7 @@
-# ![Swingby Logo](./logo.png) Swingby Improvement Proposals &amp; Specifications
+# ![Swingby Logo](./logo.png) SWIPS – Swingby Protocol Specifications
+
+<img src="./hero.png" height="300" />
+<hr />
 
 This repository contains specifications and improvement proposals for the various Swingby protocols, products and roadmap.
 
