@@ -2,21 +2,21 @@
 
 # Table of Contents
 
-- SWIPS-001: On-Chain Data &amp; Addresses
-- SWIPS-002: Swap Process for BTC → BTC.B
-- SWIPS-003: Peer Swingby Bonding
-- SWIPS-004: Peer Rewards
-- SWIPS-005: Key/Value Store
-- SWIPS-009: Peer Blocking
-- SWIPS-010: Peer States
-- SWIPS-011: KeyGen Phase
-- SWIPS-012: Network ReGroups
-- SWIPS-013: Key Rotations
-- SWIPS-014: Additional Security Measures
-- SWIPS-015: Glossary &amp; Definitions
-- SWIPS-016: Float Staking
-- SWIPS-017: Token Minting &amp; Burning
-- SWIPS-099: Future Work
+- SWIP-001: On-Chain Data &amp; Addresses
+- SWIP-002: Swap Process for BTC → BTC.B
+- SWIP-003: Peer Swingby Bonding
+- SWIP-004: Peer Rewards
+- SWIP-005: Key/Value Store
+- SWIP-009: Peer Blocking
+- SWIP-010: Peer States
+- SWIP-011: KeyGen Phase
+- SWIP-012: Network ReGroups
+- SWIP-013: Key Rotations
+- SWIP-014: Additional Security Measures
+- SWIP-015: Glossary &amp; Definitions
+- SWIP-016: Float Staking
+- SWIP-017: Token Minting &amp; Burning
+- SWIP-099: Future Work
 
 # Overview
 
