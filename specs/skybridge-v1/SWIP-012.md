@@ -14,7 +14,7 @@ The State of the TSS signer set is changed then the node is out from the current
 This SWIP defines of the way that to do regroup the curernt TSS group.
 
 # Status
-Finalized
+Draft
 
 # Specification
 
