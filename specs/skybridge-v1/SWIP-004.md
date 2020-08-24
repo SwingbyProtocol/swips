@@ -11,6 +11,7 @@ There are two types of staking to cover these expenses:
 receive swap fee / n.
 2. Float staking - nodes that deposit bridge currency will get swap fees
 proportional to their deposited amount of tokens.
+
 This SWIP defines the mechanism of swap rewards distributions. (1.)
 
 # Status
