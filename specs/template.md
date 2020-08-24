@@ -4,25 +4,21 @@
 
 ...
 
-# Abstract
+# Motivation
 
 ...
 
 # Status
 
-This SWIP is a work in progress.
-
-# Motivation
-
-...
+[Draft, In Progress, Finalized]
 
 # Specification
 
-## Pre-requisites
+## Pre-requisites (option)
 
 ...
 
-## Details
+## Details (option)
 
 ...
 
