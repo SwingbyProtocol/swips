@@ -1,27 +1,34 @@
 # [⏎](./readme.md) SWIP-009: Peer Blocking
 
 # Summary
-Each peer has two tables: unconfirmed (always synced), confirmed (not synced).
-Newly recorded swaps are put in unconfirmed and are synced (w/ validation).
-Peers watch for incoming txns, and when seen, a record moves to confirmed if valid.
-Signing sets are built using the confirmed table, always checked by each peer.
-Entries in both tables are namespaced by round_num so we only ever keep the pairs for the current and next rounds.
-There is some memory-hard PoW attached to each new unconfirmed entry for extra GPU resistant protection.
+There are two cases we need to protect the network against:
+A peer is suddenly not responding due to network issues or downtime
+A peer is being actively malicious (sending bad data to the network or targeted peers)
+Since each peer is considered to have an equal voice, we follow a similar model to Bitcoin to keep it simple. Each peer maintains a “block list” of peers that it has blocked and the time that an entry exists in this list is configurable by each peer (by default, 72 hours).
 
 # Motivation
-There are fully synced nodes is basically doesn't have a full state of the blockchain.
-That means all nodes just collect the tables of the incoming swaps. and recent outcoming transactions.
-This SWIP defines these K/V table specifications.
+Peers are included in the threshold list for the signing round.
+The minimal subset of shared peers in all sign sets meeting the threshold is chosen deterministically by each peer. 
+If a peer advertises a sign set that does not meet the threshold, it is ignored.
 
 # Status
 Finalized
 
 # Specification
 
-## K/V Lifecycle Steps
-1. K/V is proposed via node RPC. Each peer verifies validity and argon2d_PoW before adding to unconfirmed for the given round. PoW checks run in a single thread, 2.cannot be parallelized, and are queued.
-2. Other nodes sync the new unconfirmed entries, validate, and verify PoW. Existing keys cannot be changed.
-3. When the inbound transaction is seen, the K/V pair is looked up and used to determine the destination address. The pair is moved to confirmed.
+Since each peer is considered to have an equal voice, we follow a similar model to Bitcoin to keep it simple. Each peer maintains a “block list” of peers that it has blocked and the time that an entry exists in this list is configurable by each peer (by default, 72 hours).
+
+A peer takes a risk by blocking another peer. Since its sign set becomes smaller, it is selected to perform more work (which consumes more power) due to the following algorithm.
+
+For example, with a threshold of 2, when a single peer (3) decides to block a peer:
+Peer 1 - 10 other peers advertised in its sign set
+Peer 2 - 10 other peers advertised in its sign set
+Peer 3 - 9 other peers advertised in its sign set
+
+In an alternate example, where more nodes are being individually blocked by peers:
+Peer 1 - 9 other peers advertised in its sign set
+Peer 2 - 5 other peers advertised in its sign set
+Peer 3 - 8 other peers advertised in its sign set
 
 ## Pre-requisites
 None
