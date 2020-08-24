@@ -1,4 +1,4 @@
-# [⏎](./readme.md) SWIP-004: Key/Value Store
+# [⏎](./readme.md) SWIP-005: Key/Value Store
 
 # Summary
 Each peer has two tables: unconfirmed (always synced), confirmed (not synced).
