@@ -24,7 +24,7 @@ Skybridge is a decentralized cross-chain swap protocol for moving assets between
 
 ## Design Axioms
 
-Skybridge, the next generation of decentralized blockchain bridging protocol, is designed based on the following Design Axioms, listed here in order of priority.
+Skybridge, the next generation of decentralized blockchain bridging protocol, is designed based on the following Design Axioms.
 
 1. Ease and Flexibility of Integration.
 2. Lightness and Low Running Cost.
