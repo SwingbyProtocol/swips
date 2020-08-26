@@ -13,6 +13,10 @@ Finalized
 
 # Specification
 
+## Diagram
+<img src="https://docs.swingby.network/assets/Peer_States.png" width="75%" />
+<hr />
+
 1. Peer Discovery (mins. 1-2, *6 each hour) - send ping messages every 5s, build peer list, check stakes, make sure baddies are blocked.
 Ping message: peer pk, state, stake tx hash, proof of tss share.
 Correct ping triggers stake check (balance, must have been staked for at least 72 hrs and never moved) on each peer, each adds peer to its peer list. See Peer Staking.
