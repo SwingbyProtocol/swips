@@ -29,4 +29,3 @@ Contributors to the swap float pool will be able to stake their any-chain tokens
 ### Sky Pools and Governance
 
 The launch of multi-token swaps using cross-blockchain DEX liquidity and governance features for the SWINGBY token.
-ress
