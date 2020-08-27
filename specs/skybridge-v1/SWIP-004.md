@@ -1,4 +1,4 @@
-# [⏎](./readme.md) SWIP-004: Peer Rwards
+# [⏎](./readme.md) SWIP-004: Peer Rewards
 
 # Summary
 
