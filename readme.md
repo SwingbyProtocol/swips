@@ -1,4 +1,4 @@
-# SWIPS – Swingby Protocol Specifications
+# Swingby Protocol Specifications & White Papers
 
 <img src="./hero.png" width="75%" />
 <hr />
