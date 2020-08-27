@@ -24,7 +24,7 @@ Here's what you'll find in this repository:
   - [pools](./specs/pools/readme.md)
   - [governance](./specs/governance/readme.md)
 - Swingby Skybridge
-  - [RPC/HTTP Interface](./rpc/readme.md)
+  - [HTTP REst Interface](./rest/readme.md)
   - [CLI Interface](./cli/readme.md)
 - [Project Road Map](./road-map.md)
 
