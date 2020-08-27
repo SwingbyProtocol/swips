@@ -10,7 +10,7 @@ Skybridge can support transactional messages such as mint() or burn() functions 
 
 # Status
 
-Draft
+Draft.
 
 # Specification
 

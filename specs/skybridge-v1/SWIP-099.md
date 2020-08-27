@@ -17,7 +17,7 @@ The future work items.
 
 # Status
 
-Draft
+Draft.
 
 # Specification
 

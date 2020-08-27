@@ -25,6 +25,10 @@ Following the steps is Skybridge Swap flows the case of BTC → BTC.B
 5. When peers see the incoming TX, K/V pair is moved to confirmed table. The incoming TX must meet a confirmation requirement (e.g. 3 on BTC, 1 on BNB)
 6. IF not found, coins are returned, otherwise swap happens.
 
+### Diagram
+
+![](./images/swap-lifecycle.png)
+
 ## Pre-requisites
 
 None
