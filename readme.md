@@ -1,4 +1,4 @@
-# Swingby Protocol Specifications & White Papers
+# Swingby Protocol Proposals, Specifications & White Papers
 
 <img src="./hero.png" width="75%" />
 <hr />
