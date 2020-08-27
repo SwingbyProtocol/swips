@@ -31,3 +31,7 @@ Here's what you'll find in this repository:
 # Contributions Welcome!
 
 If you contribute to these pages and would like to become a named contributor please include a change to the [contributors file](./contributors.md) in a pull request.
+
+# License
+
+Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of these specification files is licensed under an MIT license, found in the root of this repository.
