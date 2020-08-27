@@ -2,21 +2,21 @@
 
 # Table of Contents
 
-- SWIP-001: On-Chain Data &amp; Addresses
-- SWIP-002: Swap Process for BTC → BTC.B
-- SWIP-003: Peer Swingby Bonding
-- SWIP-004: Peer Rewards
-- SWIP-005: Key/Value Store
-- SWIP-009: Peer Blocking
-- SWIP-010: Peer States
-- SWIP-011: KeyGen Phase
-- SWIP-012: Network ReGroups
-- SWIP-013: Key Rotations
-- SWIP-014: Additional Security Measures
-- SWIP-015: Glossary &amp; Definitions
-- SWIP-016: Float Staking
-- SWIP-017: Token Minting &amp; Burning
-- SWIP-099: Future Work
+- [SWIP-001](./SWIP-001.md): On-Chain Data &amp; Addresses
+- [SWIP-002](./SWIP-002.md): Swap Process for BTC → BTC.B
+- [SWIP-003](./SWIP-003.md): Peer Swingby Bonding
+- [SWIP-004](./SWIP-004.md): Peer Rewards
+- [SWIP-005](./SWIP-005.md): Key/Value Store
+- [SWIP-009](./SWIP-009.md): Peer Blocking
+- [SWIP-010](./SWIP-010.md): Peer States
+- [SWIP-011](./SWIP-011.md): KeyGen Phase
+- [SWIP-012](./SWIP-012.md): Network ReGroups
+- [SWIP-013](./SWIP-013.md): Key Rotations
+- [SWIP-014](./SWIP-014.md): Additional Security Measures
+- [SWIP-015](./SWIP-015.md): Glossary &amp; Definitions
+- [SWIP-016](./SWIP-016.md): Float Staking
+- [SWIP-017](./SWIP-017.md): Token Minting &amp; Burning
+- [SWIP-099](./SWIP-099.md): Future Work
 
 # Overview
 
