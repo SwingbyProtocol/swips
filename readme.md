@@ -23,8 +23,8 @@ Here's what you'll find in this repository:
   - [staking](./specs/staking/readme.md)
   - [pools](./specs/pools/readme.md)
   - [governance](./specs/governance/readme.md)
-- Swingby Skybridge
-  - [HTTP REst Interface](./rest/readme.md)
+- Swingby Skybridge v1
+  - [HTTP REst Interface](./rest/skybridge-v1/readme.md)
   - [CLI Interface](./cli/readme.md)
 - [Project Road Map](./road-map.md)
 
