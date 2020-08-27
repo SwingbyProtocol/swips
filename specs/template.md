@@ -10,7 +10,7 @@
 
 # Status
 
-[Draft, In Progress, Finalized]
+[Draft, In Progress, Finalized, Deployed]
 
 # Specification
 
@@ -24,4 +24,4 @@
 
 # License
 
-...
+Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.
