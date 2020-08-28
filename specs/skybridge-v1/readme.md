@@ -11,7 +11,7 @@
 - 🌕 [SWIP-010](./SWIP-010.md): Peer States
 - 🌕 [SWIP-011](./SWIP-011.md): KeyGen Phase
 - 🌓 [SWIP-012](./SWIP-012.md): Network ReGroups
-- 🌑 [SWIP-013](./SWIP-013.md): Key Rotations
+- 🌓 [SWIP-013](./SWIP-013.md): Key Rotations
 - 🌑 [SWIP-014](./SWIP-014.md): Additional Security Measures
 - 🌑 [SWIP-015](./SWIP-015.md): Glossary &amp; Definitions
 - 🌑 [SWIP-016](./SWIP-016.md): Float Staking
