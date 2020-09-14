@@ -1,5 +1,9 @@
 # [⏎](../readme.md) Swingby Cross-Chain Swap Protocol - Skybridge v1
 
+> 🚧 Under Construction! 🚧 <br />
+> Many of these specifications are still works in progress and may not have been fully converted from note shorthand to proper specifications yet. <br />
+> We are working on it, and we always appreciate any help in writing these up.
+
 # Table of Contents
 
 - 🌕 [SWIP-001](./SWIP-001.md): On-Chain Data &amp; Addresses
@@ -79,9 +83,7 @@ floor(epoch_time_secs / (60 * 10));
 
 #### Peer Discovery
 
-> (mins. 1-2, \*6 each hour) - send ping messages every 5s, build peer list, check stakes, make sure baddies are blocked.
+Ping message: `<peer pk, state, stake tx hash, proof of tss share>`.
 
-Ping message: `peer pk, state, stake tx hash, proof of tss share.`
-
-Correct ping triggers stake check (balance, must have been staked for at least 72 hrs and never moved) on each peer, each adds peer to its peer list. See Peer Staking.
+A valid ping message triggers the stake check (balance, must have been staked for at least 72 hrs and never moved) on each peer, each adds peer to its peer list. See Peer Staking.
 Peers are continuously building active peer lists ordered by seniority (stake time)
