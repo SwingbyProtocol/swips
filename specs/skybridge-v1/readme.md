@@ -65,7 +65,7 @@ Threshold is 60, Swingby operates 50 active peer containers at start.
 - 10 “Ingress” peers operated on the Cloud by Swingby with RPC open to the Internet, hosted behind a DDoS-protected CDN like Cloudflare.
 - The rest of the Swingby peers hosted on STC with only P2P and blockchain access.
 
-## Peer States (Note: Latest Version [Here](./SWIPS-011-Peer-States.md))
+## Peer States (Note: Latest Version [Here](./SWIP-010.md))
 
 Each “round” of the protocol lasts for 10 minutes. There are 6 of these per hour.
 
