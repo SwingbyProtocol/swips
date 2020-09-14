@@ -3,7 +3,7 @@
 # Summary
 
 Each “round” of the protocol lasts for 10 minutes.
-There are 6 of these per hour. Each “round” has a unique identifier round_num: floor(epoch_time_secs / (60 \* 10))
+There are 6 of these per hour. Each “round” has a unique identifier, defined as `round_num = floor(epoch_time_secs / (60 \* 10))`.
 
 # Motivation
 
