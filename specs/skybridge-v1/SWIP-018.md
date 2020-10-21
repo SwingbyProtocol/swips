@@ -1,4 +1,4 @@
-# [⏎](./readme.md) SWIP-018: The Swingby Swap Process for BTC to Ethereum
+# [⏎](./readme.md) SWIP-018: Swap Process for BTC to BTCE
 
 
 # Summary
