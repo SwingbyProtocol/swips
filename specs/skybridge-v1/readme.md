@@ -20,6 +20,7 @@
 - 🌑 [SWIP-015](./SWIP-015.md): Glossary &amp; Definitions
 - 🌑 [SWIP-016](./SWIP-016.md): Float Staking
 - 🌑 [SWIP-017](./SWIP-017.md): Token Minting &amp; Burning
+- 🌑 [SWIP-018](./SWIP-018.md): Swap Process for BTC to Ethereum
 - 🌑 [SWIP-099](./SWIP-099.md): Future Work
 
 # Overview
