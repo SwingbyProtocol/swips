@@ -1,18 +1,15 @@
 # SWIP-019 - A Standard Interface for Data Oracles
 
 ## Summary
-
 A standard interface for integrating data oracles into the risk management of Swingby's Skybridge protocol.
 
 ## Abstract
-
 The following standard allows the implementation of a data oracle within the Skybridge protocol for risk management features. 
 
 It provides a generic integration model for price oracles to prevent over-staking and a safety mechanism to control for any price mismatch between two bridged assets on distinct networks.
 
 ## Motivation
-
-This interface allows the Skybridge protocol to integrate an added risk layer to control various external factors through one or multiple data oracle providers.
+This interface allows the Skybridge protocol to integrate an added risk layer to control external factors through one or multiple data oracle providers.
 
 ## Status
 
@@ -20,34 +17,39 @@ Draft.
 
 ## Specification
 
-Most oracle providers require fees to **be paid in their native tokens** (e.g., BAND, LINK). Thus, a TSS address must be pre-funded with the oracle currency needed to request data from the oracle provider. Similar to other TSS addresses used in the Swingby protocol, it will be periodically churned (time-based and full-key reset) 
+Most oracle providers require fees to **be paid in their native tokens** (e.g., BAND, LINK). These must be pre-loaded in the smart contract handling the logic for node operators to be spent.
 
 The high-level steps for integrating an oracle are the following:
 
-1. At a fixed frequency `n`, the TSS address sends a request to retrieve the oracle provider's prices. 
-2. The request (or set of requests) asks for the latest prices of (1) SWINGBY and (2) all bridged assets on Skybridge (e.g. BTC, WBTC, tBTC, renBTC), (3) oracle tokens (e.g., LINK, BAND).
+1. At a fixed frequency <img src="https://render.githubusercontent.com/render/math?math=$n$" alt="$n$"> or upon a user’s request, the Skybridge protocol sends a request to get the oracle provider's prices.
+2. The request (or set of requests) asks for the latest prices of (1) SWINGBY and (2) all bridged assets on Skybridge (e.g., BTC, WBTC, tBTC, renBTC), (3) oracle tokens (e.g., LINK, BAND).
 3. Swingby protocol must also retrieve the quantities of each asset staked in the pools, the quantities of SWINGBY tokens bound by validators, and the quantities held in the TSS for paying oracle services.
 
 Once the quantities staked (in the float), the amount of SWINGBY bonded, the token quantities held by the TSS address used for paying oracle services, and the set of associated prices for all these assets are retrieved, these are used in various risk control mechanisms (described in the two subsections below).
 
-While the price oracle is designed to be called at a periodic frequency by network validators, it would not be sufficient to prevent the system to respond at a pace necessary for Skybridge to be constantely safe. Thus, third parties can also call the oracle and pay the required associated quantity with the required set of price elements necessary.
-
-If any of the two risk controls described below were trigged, this third party would be rewarded SWINGBY tokens for an amount larger than the associated cost of the data request.
+While the price oracle is designed to be called at a periodic frequency by network validators, it is **not sufficient** to prevent the system from responding at a pace necessary for Skybridge to be constantly safe. This explains why **third parties** can also call the oracle directly **only if they bear the associated cost to retrieve the required set of price elements**. If any of the two risk controls described below were triggered, this third party would be rewarded SWINGBY tokens for an amount larger than the data request's associated cost.
 
 ### 1. Risk control to prevent over-staking
 
-1. Based on the set information retrieved, the system calculates a parameter ```k``` to determine the protocol's current staking status. ```k = (qtySwingbyBinded * priceSwingby) / sum_i[qtyAsset_i * price_i]```. Note that ```i``` refers to each of the ```i``` _th_ asset included in the float **AND** the required oracle tokens held in the TSS address.
+1. Based on the set information retrieved, the system calculates a parameter <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> to determine the protocol's current staking status. 
 
-2. The ```l``` parameter is defined to determine limits on quantities that can be deposited in the protocol such as ```l = (qtySwingbyBinded * priceSwingby) / m - sum_i[qtyAsset_i * price_i]```, with `m` being the lower boundary risk ratio required for new assets to be added on both legs of Skybridge.
+<img src="https://render.githubusercontent.com/render/math?math=$k = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{ \sum_{i=1}^{n}qtyAsset_i * price_i}$" alt="$k = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{ \sum_{i=1}^{n}qtyAsset_i * price_i}$">
 
+Note that <img src="https://render.githubusercontent.com/render/math?math=$n$" alt="$n$"> is the number of assets included in the float (e.g., BTC, WBTC) **AND** the number of different oracle tokens held in the smart contract address.
 
-`k` represents the protocol's current staking status while `l` is used to determine the maximum liquidity provision for the protocol. `m` is used as the lower boundary risk ratio for the protocol's staking status.
+2. The <img src="https://render.githubusercontent.com/render/math?math=$l$" alt="$l$"> parameter is defined to determine limits on quantities that can be deposited in the protocol such as:
 
-#### Simple example on how the system could work 
+<img src="https://render.githubusercontent.com/render/math?math=$l = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{m} - \sum_{i=1}^{n}qtyAsset_i * price_i$" alt="$l = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{m} - \sum_{i=1}^{n}qtyAsset_i * price_i$">
 
-1.5 would be the accepted deviation from the m parameter for a soft risk trigger (NOTE: `m` is not meant to be equal to 1).
+with <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$m$"> being the lower boundary risk ratio required for new assets to be added on both legs of Skybridge
 
-25% and 50% would be proposed value to cap a single deposit to avoid overstaking.
+<img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> represents the protocol's current staking status, while <img src="https://render.githubusercontent.com/render/math?math=$l$" alt="$l$"> is used to determine the maximum liquidity provision for the protocol. 
+
+#### Simple example of how the system could work 
+
+1.5 would be the accepted deviation from the m parameter for a soft risk trigger (NOTE: <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$m$"> is not meant to be equal to 1).
+
+25% and 50% would be proposed values to cap a single deposit to avoid overstaking.
 
 | k < m | m <= k < m * 1.5 | k >= m * 1.5 |
 | -------- | -------- | -------- |
@@ -55,12 +57,15 @@ If any of the two risk controls described below were trigged, this third party w
 
 ### 2. Risk controls to prevent the unpegging of any set of two bridged assets
 
-1. The system calculates a set of relative ratios for each asset pegged in a two-way fashion such as `r = max(priceOriginalAsset / pricePeggedAsset, pricePeggedAsset / priceOriginalAsset)`.
-2. If `abs(1 - r)` is greater than ```f``` (i.e., the threshold to accept the price imbalance), **trigger a peg alert**. The proposed value ```f```  should be equal to the minimum fee to conduct a cross-chain swap between two bridged assets on Skybridge (e.g. WBTC --> BTC or BTC --> WBTC).
+1. The system calculates a set of relative ratios for each asset pegged in a two-way fashion such as:
+
+<img src="https://render.githubusercontent.com/render/math?math=$r = max(\frac {priceOriginalAsset}{pricePeggedAsset}, \frac {pricePeggedAsset}{priceOriginalAsset})$" alt="$r = max(\frac {priceOriginalAsset}{pricePeggedAsset}, \frac {pricePeggedAsset}{priceOriginalAsset})$">
+
+3. If <img src="https://render.githubusercontent.com/render/math?math=$abs(1 - r)$" alt="$abs(1 - r)$"> is greater than <img src="https://render.githubusercontent.com/render/math?math=$f$" alt="$f$"> (i.e., the threshold to accept the price imbalance), **trigger a peg alert**. The proposed value <img src="https://render.githubusercontent.com/render/math?math=$f$" alt="$f$"> should be equal to the minimum fee to conduct a cross-chain swap between two bridged assets on Skybridge (e.g., WBTC --> BTC or BTC --> WBTC).
 
 Once the system receives a peg alert, the following set of responses is triggered:
 
-(1) liquidity provision is suspended (i.e. minting of LP token is suspended)
+(1) liquidity provision is suspended (i.e., minting of LP token is suspended)
 (2) redemptions for liquidity providers can continue based on the new price logic to adjust for the deviation in the peg between the two assets being bridged 
 (3) user swaps are suspended
 
@@ -72,28 +77,34 @@ From the perspective of users, the UI would detect that the system is in an "ale
 
 However, if a user sends a swap transaction by interacting with the TSS address or the smart contract directly, the following logic is applied.
 
-- For ERC20 token assets (e.g., WBTC), the transaction  reverts.
+- For ERC20 token assets (e.g., WBTC), the transaction reverts.
 - For BTC, the TSS nodes will refund it (minus a fee).
 
 #### 2. Liquidity redemption continues based on the new price 
 
-When the system is in an "alert" state, liquidity redemption is not suspended since it can reflect a long-lasting indicident. Thus, a dedicated logic applies:
+When the system is in an "alert" state, liquidity redemption is not suspended since it could reflect a long-lasting incident. Thus, a dedicated logic applies:
 
 ##### (A) Normal situation
 
 Let's assume that one pool has 100 BTC and 100 WBTC.
-1BTC = 1WBTC and there are 200 LP tokens outstanding.
+1 BTC = 1 WBTC, and 200 LP tokens are outstanding.
 Each LP token can be redeemed for 1 BTC or 1 WBTC.
 
 ##### (B) Collapse situation
 
-Let's assume that one pool has 100 BTC and 100 WBTC. Once again, there are 200 LP tokens outstanding. However, the price of WBTC collapses to 0.5 BTC. 
+Let's assume that one pool has 100 BTC and 100 WBTC. Once again, 200 LP tokens are outstanding. However, the price of WBTC collapses to 0.5 BTC. 
 
 In this scenario, each LP token can be redeemed for 0.75 BTC or 1.5 WBTC.
 
+#### General situation
 
-TODO: generalize for all cases 
+Once the peg alert is in place, the price of the LP token can be expressed as:
 
+<img src="https://render.githubusercontent.com/render/math?math=$price_{LP/Y} = \frac{quantity_X \times price_{X/Y}+ quantity_Y}{numberOfLPs}$" alt="$price_{LP/Y} = \frac{quantity_X \times price_{X/Y}+ quantity_Y}{numberOfLPs}$">
+
+<img src="https://render.githubusercontent.com/render/math?math=$price_{LP/X} = \frac{quantity_X + quantity_Y \times price_{Y/X}}{numberOfLPs}$" alt="$price_{LP/X}  = \frac{quantity_X + quantity_Y \times price_{Y/X}}{numberOfLPs}$">
+
+<img src="https://render.githubusercontent.com/render/math?math=$price_{LP/X}= \frac{price_{LP/Y}}{price_{X/Y}}$" alt="$price_{LP/X}= \frac{price_{LP/Y}}{price_{X/Y}}$">
 
 #### 3. Swaps are suspended
 
@@ -101,16 +112,17 @@ When the system is in an "alert" state, swaps are suspended. From the perspectiv
 
 However, if a user sends a swap transaction by interacting with the TSS address or the smart contract directly, the following logic is applied.
 
-- For ERC20 token assets (e.g., WBTC), the transaction  reverts.
+- For ERC20 token assets (e.g., WBTC), the transaction reverts.
 - For BTC, the TSS nodes will refund it (minus a fee).
 
 ### 3. Exit of the risk checks
 
-To exit the peg alert, the system is required the price difference between the two bridged assets to be lower than specified ```f```.
+To exit these risk status, the protocol needs to receive a set of prices that allow it to calculate new risk metrics that fit within their respective normal limits.
 
-Similar to the oracle logic discussed previously, either the validators or a third party can request (from the oracle provider) the set of prices necessary to assess the current risk status of the protocol.
+- For the peg alert, the system requires the price difference between the two bridged assets to be lower than the specified <img src="https://render.githubusercontent.com/render/math?math=$f$" alt="$f$"> threshold. 
+- For the over-staking protection, the protocol requires the system's <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> parameter to return within appropriate limits (a multiplier of <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$m$">).
 
-If the new risk status of the protocol properly changes, the network rewards the third party for a reward higher than the cost of retrieving the set of relevant prices from the oracle provider.
+Like the oracle logic discussed before, either validators or a third-party actor can retrieve (from the oracle provider) the set of prices necessary to assess the current risk status of the protocol. If the new risk status of the protocol properly changes, the network rewards the third party for a reward higher than the cost of retrieving and posting the set of relevant prices from the oracle provider.
 
 ## Potential risks
 
@@ -132,7 +144,7 @@ Potentially, a penalty system could be applied to validators if they don't monit
 
 **Problem:** some assets that are being bridged may not be liquid enough to have a price feed that is not manipulable.
 
-**Potential solution**: Liquidity must be one of the criteria to consider the asset solution for what can be bridged. For SWINGBY tokens, while liquidity is expected to improve over time, it may be possible to start with a set of conservative parameters for `m`.
+**Potential solution**: Liquidity must be one of the criteria to consider the asset solution for what can be bridged. For SWINGBY tokens, while liquidity is expected to improve over time, it may be possible to start with a set of conservative parameters for <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$m$">.
 
 
 ### Lack of funds available in the TSS address for oracle payments
@@ -146,8 +158,7 @@ Potentially, a penalty system could be applied to validators if they don't monit
 
 **Problem:** A Swingby validator may wish to resign from his position and unbound his SWINGBY token, which could leave the protocol undercollateralized.
 
-**Potential solution**: The SWINGBY tokens being unbonded will be submitted to a time-lock, and the protocol would recalculate the future  `k` parameter and associated deposit limits.
-
+**Potential solution**: The SWINGBY tokens being unbonded will be submitted to a time-lock, and the protocol would recalculate the future <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> parameter and associated deposit limits.
 
 ## License
 Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.
