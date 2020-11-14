@@ -1,4 +1,4 @@
-# [⏎](../readme.md) Swingby Protocol White Papers
+# [⏎](../../readme.md) Swingby Protocol White Papers
 
 > White papers for public consumption. Look here if you're interested in the Swingby Token or learning more about what the protocols can do. 👀
 

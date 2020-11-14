@@ -1,9 +1,8 @@
-# Swingby Improvement Proposals (SWIPs)
+# ![Swingby Logo](./images/logo.png) Swingby Improvement Proposals (SWIPs)
 
 Welcome to Swingby's SWIP repo! 👋
 
 To find the list of all current SWIPs, [please click here](./swips/readme.md).
-
 
 ## What are SWIPs?
 
@@ -15,7 +14,7 @@ This repository contains specifications and improvement proposals for Swingby's 
 
 [Find all SWIPs here](./swips/readme.md)
 
- The company that funds development (Swingby Labs Pte. Ltd.) has created a blueprint that it believes represents the _optimal critical path_ to achieving the project's goals of implementing the fastest and widest-supported **cross-chain bridges for the DeFi industry**.
+The company that funds development (Swingby Labs Pte. Ltd.) has created a blueprint that it believes represents the _optimal critical path_ to achieving the project's goals of implementing the fastest and widest-supported **cross-chain bridges for the DeFi industry**.
 
 ## What is Swingby's current roadmap?
 
