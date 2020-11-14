@@ -1,17 +1,15 @@
-# ![Swingby Logo](../../logo.png) Swingby Protocol Specifications
+# ![Swingby Logo](../images/logo.png) Swingby Improvement Proposals (SWIPs)
 
-> Many of these specifications are still works in progress and may not have been fully converted from note shorthand to proper specifications yet. <br />
-> We are working on it, and we always appreciate any help in writing these up.
+> Many of these specifications are still in progress and may not have been fully converted to a proper format. <br />
+> The team is actively working on it and always appreciate any help in writing these up.
 
 ## Overview
 
-Skybridge is a decentralized cross-chain swap protocol for moving assets between blockchains. It builds trustless bridges between BTC, Ethereum, Binance Chain and other blockchains secured by a network of node groups that facilitates fast inter-blockchain swaps based on Threshold Signature Cryptography (TSS) and Multi-Party Computing (MPC) technology.
+Skybridge is a decentralized cross-chain swap protocol for moving assets between blockchains. It builds trustless bridges between the Bitcoin blockchain, Ethereum, Binance Chain and other distributed ledgers. Swingby consists of node groups that facilitate fast inter-blockchain swaps based on Threshold Signature Cryptography (TSS) and Multi-Party Computing (MPC) technology.
 
-> Design documentation for developers. Look here if you are a developer or otherwise technically inclined. 👩🏻‍💻👨🏾‍💻
+This design documentation targets primarily **developers and a technical audience**. Look here if you are a developer or otherwise technically inclined. 👩🏻‍💻👨🏾‍💻
 
-The protocol specifications are organized into _iterations_ in the following list.
-Note that these iterations are not reflected in the directory structure of this repository; we consider all of it to represent one unified platform.
-However, the various stages of development will move through these iterations as described in order to execute the [road map](./road-map.md).
+The protocol specifications are organized into _iterations_ in the follow list.
 
 This emoji legend is used throughout the SWIPS specifications to indicate the completeness status of various designs.
 
@@ -20,7 +18,7 @@ This emoji legend is used throughout the SWIPS specifications to indicate the co
 - 🌑 In progress, planned.
 - 🔜 Future plans, to be finalized.
 
-Each specification is given a unique identifier in the format: `SWIPS-<iteration><index 01-99>` to make it easier to refer to them in pull requests, issues and on task boards. Example: `SWIPS-101`.
+Each specification is given a unique identifier in the format: `SWIP-<iteration><index 01-99>` to make it easier to refer to them in pull requests, issues and on task boards. Example: `SWIP-101`.
 
 For finer grained detail about the completion progress of the tasks, follow any of the links below to see a list.
 
@@ -46,7 +44,7 @@ For finer grained detail about the completion progress of the tasks, follow any 
 
 ## Design Axioms
 
-Skybridge, the next generation of decentralized blockchain bridging protocol, is designed based on the following Design Axioms.
+Skybridge, the next generation of decentralized blockchain bridging protocol, is designed based on the following design axioms.
 
 1. Ease and Flexibility of Integration.
 2. Lightness and Low Running Cost.
@@ -67,41 +65,3 @@ Skybridge makes use of the following 'building blocks' to implement a solution t
 - Distributed K/V Store (Eventually Consistent)
 - Memory-Hard Proof of Work for GPU/ASIC Resistance (argon2d, used here)
 - ECDSA/EdDSA Threshold Signature Scheme
-
-## Peer Requirements
-
-- Runs in Docker container (STC preferred) on good hardware
-- Fast network connection but can be located anywhere
-- Stake of Swingby tokens (Cold Wallet) for min. 72 hours.
-- Have to self-send memo signed by peer P2P key to prove ownership and NOT move the tokens otherwise other peers ignore you.
-- Container cannot access the staking wallets, just broadcasts its address
-- BNB hot wallet (Small amount of BNB) - uses `APP_COLD_KEY_Secp256k1`
-- A BTC “rewards” address on the Bitcoin chain, specified in the Staking Transaction memo field.
-
-MAX 100 PEERS per swap pair. TSS gets slower beyond this.
-
-Threshold is 60, Swingby operates 50 active peer containers at start.
-
-## Network Structure
-
-- 10 “Ingress” peers operated on the Cloud by Swingby with RPC open to the Internet, hosted behind a DDoS-protected CDN like Cloudflare.
-- The rest of the Swingby peers hosted on STC with only P2P and blockchain access.
-
-## Peer States (Note: Latest Version [Here](./SWIP-010.md))
-
-Each “round” of the protocol lasts for 10 minutes. There are 6 of these per hour.
-
-Each “round” has a unique identifier round_num, calculated with the following:
-
-```js
-floor(epoch_time_secs / (60 * 10));
-```
-
-### State Transitions
-
-#### Peer Discovery
-
-Ping message: `<peer pk, state, stake tx hash, proof of tss share>`.
-
-A valid ping message triggers the stake check (balance, must have been staked for at least 72 hrs and never moved) on each peer, each adds peer to its peer list. See Peer Staking.
-Peers are continuously building active peer lists ordered by seniority (stake time)

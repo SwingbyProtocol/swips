@@ -6,6 +6,8 @@ Welcome to Swingby's SWIP repo!
 
 This repository contains specifications and improvement proposals for the various Swingby protocols, products, and its roadmap.
 
+[Find all SWIPs there.](./swips/readme.md)
+
 At its core, Swingby is a set of open protocols driven by feedback from its underlying community. The company that funds development (Swingby Labs Pte. Ltd.) has created a blueprint that it believes represents the _optimal critical path_ to achieving the project's goals of implementing the fastest and widest-supported **cross-chain bridges for DeFi**.
 
 Hence, it is important that the project leverages external input to make this happen.
@@ -24,4 +26,4 @@ If you contributed to this repository, feel free to submit a PR to [contributors
 
 ## License
 
-Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of these specification files is licensed under an MIT license, found in the root of this repository.
+Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of these specification files is licensed under an MIT license, [found in the root of this repository](./license.txt)
