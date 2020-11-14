@@ -1,14 +1,17 @@
 # SWIP-019 - A Standard Interface for Data Oracles
 
 ## Summary
+
 A standard interface for integrating data oracles into the risk management of Swingby's Skybridge protocol.
 
 ## Abstract
+
 The following standard allows the implementation of a data oracle within the Skybridge protocol for risk management features. 
 
 It provides a generic integration model for price oracles to prevent over-staking and a safety mechanism to control for any price mismatch between two bridged assets on distinct networks.
 
 ## Motivation
+
 This interface allows the Skybridge protocol to integrate an added risk layer to control various external factors through one or multiple data oracle providers.
 
 ## Status

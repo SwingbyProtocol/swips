@@ -1,10 +1,10 @@
 # [⏎](./readme.md) SWIP-099: Future Work
 
-# Summary
+## Summary
 
 The future work items.
 
-# Ideas
+## Ideas
 
 - Implement Zcoin’s Argon2-MTP for faster PoW verification
 - Support Schnorr signatures (BIP-Schnorr) and other such multi-sig schemes
@@ -15,22 +15,22 @@ The future work items.
   Schnorr/BLS Signatures
 - TSS pre-computation optimisations.
 
-# Status
+## Status
 
 Draft.
 
-# Specification
+## Specification
 
 TODO
 
-## Pre-requisites
+### Pre-requisites
 
 None
 
-## Details
+### Details
 
 None
 
-# License
+## License
 
 Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.

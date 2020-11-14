@@ -1,20 +1,20 @@
 # [⏎](./readme.md) SWIP-010: Peer States
 
-# Summary
+## Summary
 
 Each “round” of the protocol lasts for 10 minutes.
 There are 6 of these per hour. Each “round” has a unique identifier, defined as `round_num = floor(epoch_time_secs / (60 \* 10))`.
 
-# Motivation
+## Motivation
 
 All peer has an independent state based on the node life cycle.
 Each peer selects a candidate tx which contains the most valid transfers (exact match or closest intersection) with correct reward distribution output in its view. must contain at least one transfer or round is skipped. TX includes participant peer table checksum, also verified.
 
-# Status
+## Status
 
 Deployed.
 
-# Specification
+## Specification
 
 <img src="https://docs.swingby.network/assets/Peer_States.png" width="75%" />
 <hr />
@@ -78,14 +78,14 @@ The peers list is wiped at this point as it will be rebuilt when the next round 
    Peers do not accept requests for the next round at this time as it will start soon.
    The peers list is wiped at this point as it will be rebuilt when the next round starts.
 
-## Pre-requisites
+### Pre-requisites
 
 None
 
-## Details
+### Details
 
 None
 
-# License
+## License
 
 Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.

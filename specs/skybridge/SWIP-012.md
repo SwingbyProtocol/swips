@@ -1,6 +1,6 @@
 # [⏎](./readme.md) SWIP-012: Network ReGroups
 
-# Summary
+## Summary
 
 The TSS algorithm can support reassigning shares among peers to prune out peers that have gone offline or are bad.
 
@@ -16,17 +16,17 @@ Meanwhile, the protocol can continue using the old shares.
 
 Important: We must not allow peers to block each other from this process. This can be dangerous (a cartel can enter the network and attempt a takeover).
 
-# Motivation
+## Motivation
 
 The state of the signer set is changed then the node is churned out from the current signer set, but this action is essentially happening independently. So each node trying to reset a signer set and it will relocate each share at the same time.
 
 This SWIP defines of the way that to do reconfigure the curernt signer group such that it consists of a new set of signers.
 
-# Status
+## Status
 
 In testing.
 
-# Specification
+## Specification
 
 This specification is appropriately explained with an example.
 
@@ -56,14 +56,14 @@ These 'churned out' nodes could not combine 5 + 5 + 4 shares to produce 14 'shar
 
 This would only yield a problem for the network if `t` nodes were 'churned out' in a single churn cycle, leaving a threshold `t` of old shares that could be interpolated on a single polynomial.
 
-## Pre-requisites
+### Pre-requisites
 
 SWIP-011
 
-## Details
+### Details
 
 None
 
-# License
+## License
 
 Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.

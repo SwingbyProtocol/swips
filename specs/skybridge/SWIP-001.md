@@ -1,23 +1,23 @@
 # [⏎](./readme.md) SWIP-001: On-Chain Data & Addresses
 
-# Summary
+## Summary
 
 Definition of Skybridge Swap flows and Address use structure.
 
 Skybridge uses a single custody bridge model for 2 way-pegging.
 This SWIP defines the address structure and requirements of Skybridge-v1.
 
-# Motivation
+## Motivation
 
 As mentioned above, in designing Skybridge-v1, we built one custody address on each chain.
 
 Each address is generated through a threshold signature scheme, and its private key is distributed and held by an unspecified number of Swingby Nodes. Such a model is very simple and will also be designed without the need for smart contracts.
 
-# Status
+## Status
 
 Deployed.
 
-# Specification
+## Specification
 
 Requirements of the Skybrige-v1 addresses.
 
@@ -26,11 +26,11 @@ Requirements of the Skybrige-v1 addresses.
 - Staking (swingby tokens) staking address (controlled by peer owners)
 - The “rewards” address to collect fee distributions, specified in the Staking Transaction. (controlled by peer owners)
 
-## Pre-requisites
+### Pre-requisites
 
 None
 
-## Details
+### Details
 
 None
 

@@ -1,20 +1,20 @@
 # [⏎](./readme.md) SWIP-002: Swap Process for BTC → BTC.B
 
-# Summary
+## Summary
 
 Definition of Skybridge Swap flows of BTC → BTC.B
 This SWIP defines the process flow of BTC → BTC.B
 
-# Motivation
+## Motivation
 
 Swingby Node has a logic of coin swap between cross-chain.
 This logic is optimized to receive and process BTC transactions.
 
-# Status
+## Status
 
 Deployed.
 
-# Specification
+## Specification
 
 Following the steps is Skybridge Swap flows the case of BTC → BTC.B
 

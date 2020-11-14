@@ -41,8 +41,8 @@ For finer grained detail about the completion progress of the tasks, follow any 
 - 🌑 [SWIP-016](./SWIP-016.md): Float Staking
 - 🌑 [SWIP-017](./SWIP-017.md): Token Minting &amp; Burning
 - 🌑 [SWIP-018](./SWIP-018.md): Swap Process for BTC to BTCE
+- 🌑 [SWIP-019](./SWIP-019.md): A Standard Interface for Data Oracles
 - 🌑 [SWIP-099](./SWIP-099.md): Future Work
-
 
 ## Design Axioms
 
