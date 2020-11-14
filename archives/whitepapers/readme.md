@@ -1,11 +1,10 @@
-# [⏎](../readme.md) ![Swingby Logo](../logo.png) Swingby Protocol White Papers
+# [⏎](../readme.md) Swingby Protocol White Papers
 
 > White papers for public consumption. Look here if you're interested in the Swingby Token or learning more about what the protocols can do. 👀
 
 ## Current
 
-- [Swingby Skybridge White Paper, v1.1.0](./skybridge-v1/SwingbySkybridge-WhitePaper_v1.1.0.pdf). Last Updated: August 2020.
-- Swingby Sky Pools White Paper. Coming Soon.
+- [Swingby Skybridge White Paper, v1.1.0](../../whitepaper/SwingbySkybridge-WhitePaper_v1.1.0.pdf). Last Updated: August 2020.
 
 ## Legacy
 
