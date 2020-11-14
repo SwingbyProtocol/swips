@@ -4,4 +4,4 @@ Swingby products are open protocols where development is driven by the underlyin
 
 This repository is open source and all contributions, substantial or not, from outside Swingby Labs Pte. Ltd. are welcomed.
 
-Please open a pull request containing your changes with a short description of what you have added or changed.
+Please open a pull request containing your changes with a short description of what you have added or changed. It will be reviewed by the team.

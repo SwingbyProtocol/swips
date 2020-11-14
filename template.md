@@ -1,6 +1,12 @@
 # [⏎](./readme.md) SWIP-XXX: Template
 
+Note: the below document highlights the high-level structure for new SWIPs to be defined.
+
 ## Summary
+
+...
+
+## Abstract
 
 ...
 
@@ -14,11 +20,11 @@
 
 ## Specification
 
-### Pre-requisites (option)
+### Pre-requisites (optional)
 
 ...
 
-### Details (option)
+### Details (optional)
 
 ...
 

@@ -4,11 +4,11 @@
 
 ### Q4: Chaos-MainNet Launch
 
-A live network offering bidirectional BTC swaps to Ethereum will launch.
+A live network offering bi-directional BTC swaps to Ethereum will launch. The first BTC token supported will be WBTC to create a WBTC <> BTC cross-chain bridge.
 
 ### Q4: ERC20/Stablecoins TestNet
 
-The test network offering bidirectional integration with Ethereum ERC20 tokens, including stablecoins, will launch.
+The test network, offering bidirectional integration with Ethereum ERC20 tokens, including stablecoins, will launch.
 
 ### Q4: Market Buyback of Fee Distributions
 
