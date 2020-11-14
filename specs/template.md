@@ -1,27 +1,27 @@
 # [⏎](./readme.md) SWIP-XXX: Template
 
-# Summary
+## Summary
 
 ...
 
-# Motivation
+## Motivation
 
 ...
 
-# Status
+## Status
 
 [Draft, In Progress, Finalized, Deployed]
 
-# Specification
+## Specification
 
-## Pre-requisites (option)
-
-...
-
-## Details (option)
+### Pre-requisites (option)
 
 ...
 
-# License
+### Details (option)
+
+...
+
+## License
 
 Copyright (c) 2020 Swingby Labs Pte. LTD. The text content of this specification file is licensed under an MIT license found in the root of this repository.

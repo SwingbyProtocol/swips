@@ -1,10 +1,30 @@
-# [⏎](../readme.md) Swingby Cross-Chain Swap Protocol - Skybridge v1
+# ![Swingby Logo](../../logo.png) Swingby Protocol Specifications
 
-> 🚧 Under Construction! 🚧 <br />
 > Many of these specifications are still works in progress and may not have been fully converted from note shorthand to proper specifications yet. <br />
 > We are working on it, and we always appreciate any help in writing these up.
 
-# Table of Contents
+## Overview
+
+Skybridge is a decentralized cross-chain swap protocol for moving assets between blockchains. It builds trustless bridges between BTC, Ethereum, Binance Chain and other blockchains secured by a network of node groups that facilitates fast inter-blockchain swaps based on Threshold Signature Cryptography (TSS) and Multi-Party Computing (MPC) technology.
+
+> Design documentation for developers. Look here if you are a developer or otherwise technically inclined. 👩🏻‍💻👨🏾‍💻
+
+The protocol specifications are organized into _iterations_ in the following list.
+Note that these iterations are not reflected in the directory structure of this repository; we consider all of it to represent one unified platform.
+However, the various stages of development will move through these iterations as described in order to execute the [road map](./road-map.md).
+
+This emoji legend is used throughout the SWIPS specifications to indicate the completeness status of various designs.
+
+- 🌕 Completed, released.
+- 🌓 In progress, on track.
+- 🌑 In progress, planned.
+- 🔜 Future plans, to be finalized.
+
+Each specification is given a unique identifier in the format: `SWIPS-<iteration><index 01-99>` to make it easier to refer to them in pull requests, issues and on task boards. Example: `SWIPS-101`.
+
+For finer grained detail about the completion progress of the tasks, follow any of the links below to see a list.
+
+## Table of Contents
 
 - 🌕 [SWIP-001](./SWIP-001.md): On-Chain Data &amp; Addresses
 - 🌕 [SWIP-002](./SWIP-002.md): Swap Process for BTC → BTC.B
@@ -23,9 +43,6 @@
 - 🌑 [SWIP-018](./SWIP-018.md): Swap Process for BTC to BTCE
 - 🌑 [SWIP-099](./SWIP-099.md): Future Work
 
-# Overview
-
-Skybridge is a decentralized cross-chain swap protocol for moving assets between blockchains. It builds trustless bridges between BTC, Ethereum, Binance Chain and other blockchains secured by a network of node groups that facilitates fast inter-blockchain swaps based on Threshold Signature Cryptography (TSS) and Multi-Party Computing (MPC) technology.
 
 ## Design Axioms
 

@@ -1,12 +1,12 @@
-# Road Map
+## Swingby's Roadmap
 
 ## Project Roadmap Status
 
 ### 2020
 
-### Q4: ChaosNet Launch
+### Q4: Chaos-MainNet Launch
 
-A live network (unaudited) offering bidirectional BTC swaps to Binance Chain will launch.
+A live network offering bidirectional BTC swaps to Ethereum will launch.
 
 ### Q4: ERC20/Stablecoins TestNet
 
