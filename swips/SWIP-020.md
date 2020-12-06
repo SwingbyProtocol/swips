@@ -1,5 +1,4 @@
-# SWIP-020 - Swingby Liquidity Provider (SWLP) Token Rate Mechanism
-
+# SWIP-020 - Swingby Liquidity Provider ("sbLP") Token Rate Mechanism
 
 ## Summary
 
