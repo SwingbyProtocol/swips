@@ -18,7 +18,7 @@ The company that funds development (Swingby Labs Pte. Ltd.) has created a bluepr
 
 ## What is Swingby's current roadmap?
 
-To learn about Swingby's current technical roadmap, please visit the [dedicated page in this repo](./roadmap.md). For a more general introduction to Swingby, you can [refer to our website](https://swingby.network/en).
+To learn about Swingby's current technical roadmap, please visit the [dedicated page in this repo](./roadmap.md). For a more general introduction to Swingby, you can [refer to our website](https://swingby.network/).
 
 ## Contributions are welcome
 
