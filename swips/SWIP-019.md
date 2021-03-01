@@ -4,7 +4,7 @@
 A standard interface for integrating data oracles into the risk management of Swingby's Skybridge protocol.
 
 ## Abstract
-The following standard allows the implementation of a data oracle within the Skybridge protocol for risk management features. 
+The following standard allows the implementation of a data oracle within the Skybridge protocol for risk management features.
 
 It provides a generic integration model for price oracles to prevent over-staking and a safety mechanism to control for any price mismatch between two bridged assets on distinct networks.
 
@@ -17,21 +17,21 @@ Draft.
 
 ## Specification
 
-Most oracle providers require fees to **be paid in their native tokens** (e.g., BAND, LINK). These must be pre-loaded in the smart contract handling the logic for node operators to be spent.
+Most oracle providers require fees to **be paid in their native tokens** (e.g., BAND on BandChain). These must be pre-loaded in the smart contract handling the logic for node operators to be spent. Alternatively, the payment of these can be handled off-chain.
 
 The high-level steps for integrating an oracle are the following:
 
-1. At a fixed frequency <img src="https://render.githubusercontent.com/render/math?math=$n$" alt="$n$"> or upon a user’s request, the Skybridge protocol sends a request to get the oracle provider's prices.
-2. The request (or set of requests) asks for the latest prices of (1) SWINGBY and (2) all bridged assets on Skybridge (e.g., BTC, WBTC, tBTC, renBTC), (3) oracle tokens (e.g., LINK, BAND).
+1. At a fixed frequency <img src="https://render.githubusercontent.com/render/math?math=$n$" alt="$n$"> or upon a user’s request, the Skybridge protocol sends a request to get the oracle provider's prices or reads the price feed on-chain.
+2. The protocol retrieves the latest prices of (1) SWINGBY and (2) all bridged assets on Skybridge (e.g., BTC, WBTC, tBTC, renBTC), (3) oracle tokens (e.g., LINK, BAND).
 3. Swingby protocol must also retrieve the quantities of each asset staked in the pools, the quantities of SWINGBY tokens bound by validators, and the quantities held in the TSS for paying oracle services.
 
 Once the quantities staked (in the float), the amount of SWINGBY bonded, the token quantities held by the TSS address used for paying oracle services, and the set of associated prices for all these assets are retrieved, these are used in various risk control mechanisms (described in the two subsections below).
 
-While the price oracle is designed to be called at a periodic frequency by network validators, it is **not sufficient** to prevent the system from responding at a pace necessary for Skybridge to be constantly safe. This explains why **third parties** can also call the oracle directly **only if they bear the associated cost to retrieve the required set of price elements**. If any of the two risk controls described below were triggered, this third party would be rewarded SWINGBY tokens for an amount larger than the data request's associated cost.
+While the price oracle is designed to be called/read at a periodic frequency by network validators, it is **not sufficient** to prevent the system from responding at a pace necessary for Skybridge to be constantly safe. This explains why **third parties** can also call the oracle directly **only if they bear the associated cost to retrieve the required set of price elements**. If any of the two risk controls described below were triggered, this third party would be rewarded SWINGBY tokens for an amount larger than the data request's associated cost.
 
 ### 1. Risk control to prevent over-staking
 
-1. Based on the set information retrieved, the system calculates a parameter <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> to determine the protocol's current staking status. 
+1. Based on the set information retrieved, the system calculates a parameter <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> to determine the protocol's current staking status.
 
 <img src="https://render.githubusercontent.com/render/math?math=$k = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{ \sum_{i=1}^{n}qtyAsset_i * price_i}$" alt="$k = \frac{(qtySwingbyBindedByChurnNodes * priceSwingby)}{ \sum_{i=1}^{n}qtyAsset_i * price_i}$">
 
@@ -45,7 +45,7 @@ with <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$
 
 <img src="https://render.githubusercontent.com/render/math?math=$k$" alt="$k$"> represents the protocol's current staking status, while <img src="https://render.githubusercontent.com/render/math?math=$l$" alt="$l$"> is used to determine the maximum liquidity provision for the protocol. 
 
-#### Simple example of how the system could work 
+#### How could the system work? (Example)
 
 1.5 would be the accepted deviation from the m parameter for a soft risk trigger (NOTE: <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$m$"> is not meant to be equal to 1).
 
@@ -54,6 +54,12 @@ with <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$
 | k < m | m <= k < m * 1.5 | k >= m * 1.5 |
 | -------- | -------- | -------- |
 | Liquidity deposits are suspended.  | It triggers a risk alert to the user. Single deposits are bounded by 25% * ```l```.| Normal status. A single deposit's value is bounded by 50% * ```l```|
+
+#### Integration with a Proof of Reserve oracle feed
+
+In the above case, the system calculates the protocol's collateralization ratio based on balances held in the TSS address controlled by SWINGBY metanodes. These are reported by validators themselves. However, in events such as balances failing to refresh properly, it could result in the wrong risk control metrics, hence potentially impacting the correct behavior of Skybridge.
+
+Protocols like ChainLink offers Proof of Reserve feeds that allow them to report any significant changes in the balances held by an address. In this case, oracle feeds could monitor the funds held on TSS addresses on a variety of non smart-contract blockchains, such as Bitcoin, or other smart-contract platforms than the ones where the risk control system is handled. By doing so, any misrepresentation of the TSS balances would be reported and could trigger a risk alert on the protocol, leading to actions such as suspending the bridge along with any new inflow of liquidity in the pools.
 
 ### 2. Risk controls to prevent the unpegging of any set of two bridged assets
 
@@ -66,7 +72,7 @@ with <img src="https://render.githubusercontent.com/render/math?math=$m$" alt="$
 Once the system receives a peg alert, the following set of responses is triggered:
 
 (1) liquidity provision is suspended (i.e., minting of LP token is suspended)
-(2) redemptions for liquidity providers can continue based on the new price logic to adjust for the deviation in the peg between the two assets being bridged 
+(2) redemptions for liquidity providers can continue based on the new price logic to adjust for the deviation in the peg between the two assets being bridged
 (3) user swaps are suspended
 
 #### 1. Liquidity provision is suspended
@@ -80,7 +86,7 @@ However, if a user sends a swap transaction by interacting with the TSS address 
 - For ERC20 token assets (e.g., WBTC), the transaction reverts.
 - For BTC, the TSS nodes will refund it (minus a fee).
 
-#### 2. Liquidity redemption continues based on the new price 
+#### 2. Liquidity redemption continues based on the new price
 
 When the system is in an "alert" state, liquidity redemption is not suspended since it could reflect a long-lasting incident. Thus, a dedicated logic applies:
 
